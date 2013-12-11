@@ -11,14 +11,15 @@ var connectTime;
 var messageList = document.getElementById('messageList');
 var commandInput = document.getElementById('commandInput');
 
-
-// create a room
-console.log('announcing self');
-connectTime = Date.now();
-scope.announce({ role: me, room: 'test' , time: connectTime });
+socket.once('open', function() {
+  // create a room
+  console.log('announcing self');
+  connectTime = Date.now();
+  scope.announce({ role: me, room: 'test', time: connectTime });
+});
 
 // catch announce message from partner
-scope.on('announce', function(data) {
+scope.on('peer:announce', function(data) {
 
   console.log('received announce : ' + JSON.stringify(data));
   // when both announce themselves, but we have been later, re-announce ourselves
@@ -38,8 +39,7 @@ scope.on('announce', function(data) {
   return;
 });
 
-scope.on('leave', function(data) {
-
+scope.on('peer:leave', function(data) {
   console.log('received leave : ' + JSON.stringify(data));
   writeChat("..peer disconnected", false);
   peer = me;
@@ -80,7 +80,7 @@ function handleCommand(evt) {
 commandInput.addEventListener('keydown', handleCommand);
 
 // handle receiving input string
-scope.on('chat', function(data) {
+scope.on('chat', function(srcState, data) {
   // if the chat message is not for this room ignore
   if (data.room !== 'test') {
     return;
