@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <style>
+  table td {
+    padding: 5px;
+  }
+  </style>
+<head>
+  <meta name="rtc-room" content="test">
+  <title>rtc.io peerconnection demonstration</title>
+</head>
+<body>
+	<h2>rtc.io Signaller demonstration</h2>
+  <div>
+    <p>This shows how a chat application can be made just using the signaller.</p>
+    <p>Open this page in two browsers.<p>
+    <label>Enter message: </label><input id="commandInput" type="text"></input>
+    <table>
+      <tbody id="messageList"></tbody>
+    </table>
+  </div>
+  <script src="/rtc.io/primus.js" type="text/javascript"></script>
+  <script src="/js/common.js" type="text/javascript"></script>
+</body>
+</html>

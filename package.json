@@ -1,0 +1,27 @@
+{
+  "name": "rtcio-demo-signalling",
+  "version": "0.0.1",
+  "description": "an application that runs a signaling server and shows how to exchange information over it",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rtc-io/rtcio-demo-signalling.git"
+  },
+  "keywords": [
+    "webrtc"
+  ],
+  "author": "Silvia Pfeiffer <silvia.pfeiffer@nicta.com.au>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rtc-io/rtcio-demo-signalling/issues"
+  },
+  "dependencies": {
+    "express": "~3.4.0",
+    "browserify-middleware": "~1.21.0",
+    "rtc-switchboard": "~0.4.1",
+    "rtc-signaller": "~0.9.0"
+  }
+}
