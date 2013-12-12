@@ -34,6 +34,7 @@ To start the app on a different port, run it as:
     ```
     NODE_PORT=3020 npm start
     ```
+Make sure to also change the port that your client file public/js/common.js is connecting to.
 
 To debug the server, run it as:
     ```

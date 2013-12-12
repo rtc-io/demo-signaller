@@ -9,12 +9,11 @@ var app = express();
 app.set('port', 1337);
 app.use(app.router);
 
+// serve js via browserify so you can use require
 app.use('/js', browserify(path.join(__dirname, 'public/js'), {
   minify: false,
   debug: true
 }));
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
@@ -22,9 +21,11 @@ if ('development' == app.get('env')) {
 }
 
 // serve front-end files
+app.use(express.static(path.join(__dirname, 'public')));
 var server = require('http').Server(app);
-var switchboard = require('rtc-switchboard')(server);
 
+// set up signalling server
+var switchboard = require('rtc-switchboard')(server);
 app.get('/rtc.io/primus.js', switchboard.library());
 
 // start the server

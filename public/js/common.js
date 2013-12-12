@@ -21,7 +21,7 @@ socket.once('open', function() {
 scope.on('peer:announce', function(data) {
   // we've got a new friend
   friends[data.id] = data;
-  writeChat('new friend (id: ' + data.id + ') connected', data.id);
+  writeChat('new friend connected', data.id);
 });
 
 scope.on('peer:leave', function(id) {
@@ -37,7 +37,8 @@ function writeChat(text, id) {
       'data-sender': id
     },
     crel('td', moment().format('MM:SS')),
-    crel('td', text)
+    crel('td', text),
+    crel('td', '(' + id + ')')
   ));
 
   messageList.scrollTop = messageList.scrollHeight;
@@ -46,10 +47,14 @@ function writeChat(text, id) {
 // handle input string
 function handleCommand(evt) {
   if (evt && evt.keyCode === 13 && commandInput.value != '') {
+    // broadcast a 'chat' message
     scope.send('/chat', {
       text: commandInput.value,
       sender: scope.id
     });
+
+    // To send to particular friend, use:
+    //scope.send('/to', otherId, '/chat', {text: commandInput.value, sender: scope.id});
 
     writeChat(commandInput.value, scope.id);
     commandInput.value = '';
@@ -58,7 +63,7 @@ function handleCommand(evt) {
 
 commandInput.addEventListener('keydown', handleCommand);
 
-// handle receiving input string
+// handle received chat message
 scope.on('chat', function(srcState, data) {
   writeChat(data.text, data.sender);
 });
