@@ -26,7 +26,7 @@ scope.on('peer:announce', function(data) {
 
 scope.on('peer:leave', function(id) {
   if (friends[id]) {
-    writeChat('friend ' + id + ' left', id);
+    writeChat('friend left', id);
     friends[id] = undefined;
   }
 });
