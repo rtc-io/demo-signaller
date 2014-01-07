@@ -64,6 +64,6 @@ function handleCommand(evt) {
 commandInput.addEventListener('keydown', handleCommand);
 
 // handle received chat message
-scope.on('chat', function(srcState, data) {
+scope.on('chat', function(data, srcState) {
   writeChat(data.text, data.sender);
 });
