@@ -1,6 +1,6 @@
 {
   "name": "rtcio-demo-signalling",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "an application that runs a signaling server and shows how to exchange information over it",
   "main": "server.js",
   "scripts": {
