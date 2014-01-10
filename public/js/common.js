@@ -3,37 +3,31 @@
 
 var crel = require('crel');
 var moment = require('moment');
-var signaller = require('rtc-signaller');
-var socket = Primus.connect('http://localhost:1337/');
-var scope = signaller(socket);
+var signaller = require('rtc-signaller')('http://localhost:1337/');
 var friends = {};
 
 var messageList = document.getElementById('messageList');
 var commandInput = document.getElementById('commandInput');
 
-socket.once('open', function() {
-  // create a room
-  console.log('announcing self');
-  scope.announce({ room: 'test' });
-});
-
 // catch announce message from partner
-scope.on('peer:announce', function(data) {
+signaller.on('peer:announce', function(data) {
   // we've got a new friend
   friends[data.id] = data;
   writeChat('new friend connected', data.id);
 });
 
-scope.on('peer:leave', function(id) {
+signaller.on('peer:leave', function(id) {
   if (friends[id]) {
     writeChat('friend left', id);
     friends[id] = undefined;
   }
 });
 
+signaller.announce({ room: 'test' });
+
 function writeChat(text, id) {
   messageList.appendChild(crel('tr', {
-      class: id === scope.id ? 'local' : 'remote',
+      class: id === signaller.id ? 'local' : 'remote',
       'data-sender': id
     },
     crel('td', moment().format('MM:SS')),
@@ -48,15 +42,15 @@ function writeChat(text, id) {
 function handleCommand(evt) {
   if (evt && evt.keyCode === 13 && commandInput.value != '') {
     // broadcast a 'chat' message
-    scope.send('/chat', {
+    signaller.send('/chat', {
       text: commandInput.value,
-      sender: scope.id
+      sender: signaller.id
     });
 
     // To send to particular friend, use:
-    //scope.send('/to', otherId, '/chat', {text: commandInput.value, sender: scope.id});
+    //signaller.send('/to', otherId, '/chat', {text: commandInput.value, sender: signaller.id});
 
-    writeChat(commandInput.value, scope.id);
+    writeChat(commandInput.value, signaller.id);
     commandInput.value = '';
   }
 }
@@ -64,6 +58,6 @@ function handleCommand(evt) {
 commandInput.addEventListener('keydown', handleCommand);
 
 // handle received chat message
-scope.on('chat', function(data, srcState) {
+signaller.on('chat', function(data, srcState) {
   writeChat(data.text, data.sender);
 });
