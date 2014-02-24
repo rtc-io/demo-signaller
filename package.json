@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "an application that runs a signaling server and shows how to exchange information over it",
   "main": "server.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
