@@ -3,7 +3,7 @@
 
 var crel = require('crel');
 var moment = require('moment');
-var signaller = require('rtc-signaller')('http://localhost:1337/');
+var signaller = require('rtc-signaller')('http://localhost:3000/');
 var friends = {};
 
 var messageList = document.getElementById('messageList');

@@ -6,7 +6,7 @@ var browserify = require('browserify-middleware');
 var path = require('path');
 var app = express();
 
-app.set('port', 1337);
+app.set('port', process.env.NODE_PORT || 3000);
 app.use(app.router);
 
 // serve js via browserify so you can use require
@@ -34,5 +34,5 @@ server.listen(app.get('port'), function(err) {
     return console.log('Encountered error starting server: ', err);
   }
 
-  console.log('server running on port ' + app.get('port'));
+  console.log('server running on http://localhost:' + app.get('port') + '/');
 });
