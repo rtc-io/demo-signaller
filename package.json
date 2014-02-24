@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "express": "~3.4.0",
-    "browserify-middleware": "~2.2.0",
-    "rtc-switchboard": "~0.5.0",
-    "rtc-signaller": "~0.15.0",
+    "browserify-middleware": "~2.3.0",
+    "rtc-switchboard": "~0.7.2",
+    "rtc-signaller": "~0.18.2",
     "moment": "~2.5.0",
     "crel": "~1.1.0"
   }
