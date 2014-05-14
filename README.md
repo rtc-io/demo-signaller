@@ -22,12 +22,12 @@ Getting started:
 
 4. Find the application at the following url:
     ```
-    http://localhost:1337/index.html
+    http://localhost:3000/index.html
     ```
 
 5. Load the URL in a second browser to establish the video conference:
     ```
-    http://localhost:1337/index.html
+    http://localhost:3000/index.html
     ```
 
 To start the app on a different port, run it as:
