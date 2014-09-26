@@ -22,6 +22,7 @@
   "dependencies": {
     "browserify-middleware": "^3.0.1",
     "crel": "^2.1.5",
+    "errorhandler": "^1.2.0",
     "express": "^4.9.5",
     "moment": "^2.8.3",
     "rtc-signaller": "^3.0.0",
