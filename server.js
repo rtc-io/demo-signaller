@@ -7,7 +7,6 @@ var path = require('path');
 var app = express();
 
 app.set('port', process.env.NODE_PORT || 3000);
-app.use(app.router);
 
 // serve js via browserify so you can use require
 app.use('/js', browserify(path.join(__dirname, 'public/js'), {
@@ -17,7 +16,7 @@ app.use('/js', browserify(path.join(__dirname, 'public/js'), {
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(require('errorhandler')());
 }
 
 // serve front-end files
