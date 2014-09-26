@@ -20,11 +20,11 @@
     "url": "https://github.com/rtc-io/rtcio-demo-signalling/issues"
   },
   "dependencies": {
-    "express": "~3.4.0",
-    "browserify-middleware": "~2.3.0",
-    "rtc-switchboard": "~0.7.2",
-    "rtc-signaller": "~0.18.2",
-    "moment": "~2.5.0",
-    "crel": "~1.1.0"
+    "browserify-middleware": "^3.0.1",
+    "crel": "^2.1.5",
+    "express": "^4.9.5",
+    "moment": "^2.8.3",
+    "rtc-signaller": "^3.0.0",
+    "rtc-switchboard": "^0.10.3"
   }
 }
