@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        tr.local {
+            color: red;
+        }
+        tr.remote {
+            color: green;
+        }
+        td {
+            padding: 5px;
+        }
+    </style>
+    <head>
+        <meta name="rtc-room" content="test">
+        <title>rtc.io peerconnection demonstration</title>
+    </head>
+    <body>
+        <h2>rtc.io Signaller demonstration</h2>
+        <div>
+            <p>This shows how a chat application can be made just using the signaller.</p>
+            <p>Open this page in two browsers.<p>
+            <label>Enter message: </label><input id="commandInput" type="text">
+            <table>
+                <tbody id="messageList"></tbody>
+            </table>
+        </div>
+        <script src="bundle.js"></script>
+    </body>
+</html>
