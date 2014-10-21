@@ -1,44 +1,21 @@
-rtcio-demo-signaller
-====================
+# rtc-signaller demo
 
-An example app showing how to use [rtc-switchboard](https://github.com/rtc-io/rtc-switchboard) to set up a signalling server and [rtc-signaller](https://github.com/rtc-io/rtc-signaller) on the client to exchange messages via the server.
+This is a demonstration application that illustrates how [`rtc-signaller`](https://github.com/rtc-io/rtc-signaller) can be used as a standalone package to send messages between multiple participants using WebSocket connections to [`rtc-switchboard`](https://github.com/rtc-io/rtc-switchboard).
 
-Getting started:
+## Running the Demo
 
-1. Clone the repo:
-    ```
-    git clone https://github.com/rtc-io/rtcio-demo-signalling.git
-    ```
+If you wish to run this demo locally, then you can run the following:
 
-2. Install node dependencies (it's assumed you have node installed):
-    ```
-    npm install
-    ```
+```
+npm install beefy browserify -g
+git clone https://github.com/rtc-io/rtcio-demo-signaller.git demo-signaller
+cd demo-signaller
+beefy index.js:bundle.js
+```
 
-3. Run the server:
-    ```
-    npm start
-    ```
-
-4. Find the application at the following url:
-    ```
-    http://localhost:3000/index.html
-    ```
-
-5. Load the URL in a second browser to establish the video conference:
-    ```
-    http://localhost:3000/index.html
-    ```
-
-To start the app on a different port, run it as:
-    ```
-    NODE_PORT=3020 npm start
-    ```
-
-Make sure to also change the port that your client file public/js/common.js is connecting to.
-
-To debug the server, run it as:
-    ```
-    DEBUG=rtc* npm start
-    ```
-
+You should now be able to open a browser window to
+http://localhost:9966/ (or alternatively
+http://rtc-io.github.io/rtcio-demo-mesh/ if you don't want to run
+the demo locally).  Either way you'll join the `rtcio-demo-mesh` room on the
+switchboard and should be able to move around a couple of objects that are
+attempting to share state across the established peer connections.
