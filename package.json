@@ -5,6 +5,7 @@
   "main": "server.js",
   "private": true,
   "scripts": {
+    "build": "browserify index.js > bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,13 +20,11 @@
   "bugs": {
     "url": "https://github.com/rtc-io/rtcio-demo-signalling/issues"
   },
-  "dependencies": {
-    "browserify-middleware": "^3.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^6.1.0",
     "crel": "^2.1.5",
-    "errorhandler": "^1.2.0",
-    "express": "^4.9.5",
     "moment": "^2.8.3",
-    "rtc-signaller": "^3.0.0",
-    "rtc-switchboard": "^0.10.3"
+    "rtc-signaller": "^4.0.3"
   }
 }
