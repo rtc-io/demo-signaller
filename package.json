@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "build": "browserify index.js > bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "beefy index.js:bundle.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,6 @@
     "browserify": "^6.1.0",
     "crel": "^2.1.5",
     "moment": "^2.8.3",
-    "rtc-signaller": "^4.0.3"
+    "rtc-signaller": "^6.1.0"
   }
 }
