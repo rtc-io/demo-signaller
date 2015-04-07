@@ -1,6 +1,7 @@
 var crel = require('crel');
 var moment = require('moment');
-var signaller = require('rtc-signaller')('//switchboard.rtc.io');
+var messenger = require('rtc-switchboard-messenger');
+var signaller = require('rtc-signaller')(messenger('https://switchboard.rtc.io'));
 var friends = {};
 
 var messageList = document.getElementById('messageList');
@@ -20,7 +21,7 @@ signaller.on('peer:leave', function(id) {
   }
 });
 
-signaller.announce({ room: 'test' });
+signaller.announce({ room: 'signaller-demo-test' });
 
 function writeChat(text, id) {
   messageList.appendChild(crel('tr', {
@@ -52,6 +53,6 @@ function handleCommand(evt) {
 commandInput.addEventListener('keydown', handleCommand);
 
 // handle received chat message
-signaller.on('chat', function(data, srcState) {
+signaller.on('message:chat', function(data, srcState) {
   writeChat(data.text, data.sender);
 });
