@@ -7,7 +7,7 @@
   "scripts": {
     "build": "browserify index.js > bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "beefy index.js:bundle.js"
+    "start": "rm -rf bundle.js && beefy index.js:bundle.js"
   },
   "repository": {
     "type": "git",
